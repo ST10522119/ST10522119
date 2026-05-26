@@ -1,0 +1,100 @@
+cd /Users/lebohang/Documents/NetBeansProjects/PROG5121_POE_ST10522119; "JAVA_HOME=/Applications/Apache NetBeans.app/Contents/Home" "/Applications/Apache NetBeans.app/Contents/Resources/netbeans/java/maven/bin/mvn" -Dexec.vmArgs= "-Dexec.args=${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}" -Dexec.appArgs= -Dexec.mainClass=com.mycompany.prog5121_poe_st10522119.PROG5121_POE_ST10522119 "-Dexec.executable=/Applications/Apache NetBeans.app/Contents/Home/bin/java" --no-transfer-progress process-classes org.codehaus.mojo:exec-maven-plugin:3.5.1:exec
+Scanning for projects...
+
+-----------------< za.ac.iie:PROG5121_POE_ST10522119 >------------------
+Building PROG5121_POE_ST10522119 1.0-SNAPSHOT
+  from pom.xml
+--------------------------------[ jar ]---------------------------------
+
+--- resources:3.3.1:resources (default-resources) @ PROG5121_POE_ST10522119 ---
+skip non existing resourceDirectory /Users/lebohang/Documents/NetBeansProjects/PROG5121_POE_ST10522119/src/main/resources
+
+--- compiler:3.13.0:compile (default-compile) @ PROG5121_POE_ST10522119 ---
+Recompiling the module because of changed source code.
+Compiling 3 source files with javac [debug release 25] to target/classes
+
+--- exec:3.5.1:exec (default-cli) @ PROG5121_POE_ST10522119 ---
+QuickChat Registration
+Enter your first name: 
+Wame
+Enter your surname: 
+Makumaku
+Enter username: 
+Wame_
+Username successfully captured.
+Enter password: 
+Mavusa@13
+Password successfully captured.
+Enter your South African cellphone number with the international code, for example +27813249913: 
++27815044826
+Cell number successfully captured.
+User registered successfully.
+
+Login
+Enter your username: 
+Wame_
+Enter your password: 
+Mavusa@13
+Welcome Wame, Makumaku it is great to see you again.
+
+Welcome to QuickChat!
+How many messages would you like to enter? 
+2
+
+Please choose an option:
+1.) Send Messages
+2.) Show recently sent messages
+3.) Quit
+1.)
+Please enter a valid whole number: 
+1
+Message ID generated: 5351204508
+Enter recipient cellphone number with international code: 
++27788037385
+Cell phone number successfully captured.
+Enter message of less than 250 characters: 
+Hi There!
+Message ready to send.
+Choose what to do with this message
+1.) Send the Message
+2.) Disregard the Message
+3.) Store the Message to send later
+Selection: 
+1
+Message successfully sent.
+Message ID: 5351204508
+Message Hash: 53:1:HITHERE
+Recipient: +27788037385
+Message: Hi There!
+Message ID generated: 1474988128
+Enter recipient cellphone number with international code: 
++27788037385
+Cell phone number successfully captured.
+Enter message of less than 250 characters: 
+How are you?
+Message ready to send.
+Choose what to do with this message
+1.) Send the Message
+2.) Disregard the Message
+3.) Store the Message to send later
+Selection: 
+1
+Message successfully sent.
+Message ID: 1474988128
+Message Hash: 14:2:HOWYOU
+Recipient: +27788037385
+Message: How are you?
+
+Please choose an option:
+1.) Send Messages
+2.) Show recently sent messages
+3.) Quit
+3
+Total messages sent: 2
+Goodbye.
+------------------------------------------------------------------------
+BUILD SUCCESS
+------------------------------------------------------------------------
+Total time:  02:42 min
+Finished at: 2026-05-26T01:36:57+02:00
+------------------------------------------------------------------------

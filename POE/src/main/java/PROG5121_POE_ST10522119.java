@@ -305,3 +305,10 @@ public class PROG5121_POE_ST10522119
         }
     }
 }
+
+
+/*
+Bibliography
+Farrell, J., 2023. Java Programming. Boston: Cengage Learning.
+The Independent Institute of Education (IIE), 2026. Programming 1A Assignment[PROG5121wPOE] The Independent Institute of Education: Unpublished.
+*/

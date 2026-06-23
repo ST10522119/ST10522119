@@ -55,6 +55,38 @@ public class MessageTest
         assertEquals("Message exceeds 250 characters by 1; please reduce the size.", message.validateMessageLength());
         assertEquals(Message.MESSAGE_TOO_LONG, message.getMessageLengthDisplayMessage());
     }
+    
+    /*
+     * This test confirms that the message "Message ready to send" will be displayed
+     * when the messgae length is valid.
+     */
+    
+    @Test
+    public void testMessageLengthDisplaySuccess()
+    {
+        Message message = new Message("0012345678", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
+        assertEquals(Message.MESSAGE_SENT_TEXT, message.getMessageLengthDisplayMessage());
+    }
+    
+    /*
+     * This test confirms that the message "Message exceeds 250 characters, please reduce the size." 
+     * when the message length is invalid.
+     */
+    
+    @Test
+    public void testMessageLengthDisplayFailure()
+    {
+        StringBuilder longMessage = new StringBuilder("");
+        int count;
+        
+        for(count = 0; count < 251; count++)
+        {
+            longMessage.append("a");
+        }
+        
+        Message message = new Message("0012345678", 0, "+27718693002", longMessage.toString());
+        assertEquals(Message.MESSAGE_TOO_LONG, message.getMessageLengthDisplayMessage());
+    }
 
     /*
      * This test confirms that the recipient number is correctly formatted when it contains the +27 international code.
@@ -87,26 +119,26 @@ public class MessageTest
     public void testMessageHashIsCorrect()
     {
         Message message = new Message("0012345678", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
-        assertEquals(Message.RECIPIENT_ERROR, message.createMessageHash());
+        assertEquals("00:0:HITONIGHT", message.createMessageHash());
     }
-
+    
     /*
-     * This test confirms that a message ID with ten or fewer characters passes the ID check.
+     * This test confirms that a valid ten-digit message ID passes validation.
      */
     
     @Test
-    public void testMessageIDCorrectLength()
+    public void testMessageIDVaid()
     {
         Message message = new Message("0012345678", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertTrue(message.checkMessageID());
     }
-
+    
     /*
-     * This test confirms that a message ID with more than ten characters fails the ID check.
+     * This test confirms that a message with more than ten characters fails.
      */
     
     @Test
-    public void testMessageIDTooLong()
+    public void testMessageIDInvalid()
     {
         Message message = new Message("00123456789", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertFalse(message.checkMessageID());
@@ -213,6 +245,22 @@ public class MessageTest
     }
     
     /*
+     * This test confirms that the disregarded message array is populated correctly.
+     */
+    
+    @Test
+    public void testDisregardedMessagesArrayCorrectlyPopulated()
+    {
+        Message report = new Message();
+        String[] disregardedMessages;
+        
+        populateFinalPoeTestData();
+        disregardedMessages = report.getDisregardedMessagesArray();
+        assertEquals(1, disregardedMessages.length);
+        assertEquals("Yohoooo, I am at your gate.", disregardedMessages[0]);
+    }
+    
+    /*
      * This test confirms that the longest message can be found from arrays.
      */
     
@@ -275,7 +323,9 @@ public class MessageTest
         assertTrue(result.contains("Recipient"));
         assertTrue(result.contains("Message"));
         assertTrue(result.contains("Did you get the cake?"));
-        assertTrue(result.contains("Is it dinner time!"));
+        assertTrue(result.contains("Where are you? You are late! I have asked you to be on time."));
+        assertTrue(result.contains("It is dinner time!"));
+        assertTrue(result.contains("Ok, I am leaving without you."));
     }
     
     /*

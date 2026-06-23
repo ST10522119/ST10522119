@@ -99,6 +99,28 @@ public class Login
         this.cellphoneNumber = cellphoneNumber;
     }
 
+    
+    /*
+     *These getter methods will be used by the main application when it needs to
+     * display names or use the registered cellphone number as a sender value.
+     */
+    
+    public String getFirstName()
+    {
+        return firstName;
+    }
+    
+    public String getSurname()
+    {
+        return surname;
+    }
+    
+    public String getCellphoneNumber()
+    {
+        return cellphoneNumber;
+    }
+    
+    
     /*
      * This method stores the username and password that the user enters when
      * attempting to log in.
@@ -130,6 +152,7 @@ public class Login
         boolean hasNumber = false;
         boolean hasSpecial = false;
         int count;
+        char currentCharacter;
 
         if(password == null || password.length() < 8)
         {
@@ -138,7 +161,7 @@ public class Login
 
         for(count = 0; count < password.length(); count++)
         {
-            char currentCharacter = password.charAt(count);
+            currentCharacter = password.charAt(count);
 
             if(Character.isUpperCase(currentCharacter))
             {

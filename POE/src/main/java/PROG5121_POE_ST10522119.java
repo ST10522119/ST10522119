@@ -109,7 +109,8 @@ public class PROG5121_POE_ST10522119
          */
         System.out.println("\nWelcome to QuickChat!");
         System.out.println("How many messages would you like to enter? ");
-        numberOfMessages = readNonNegativeInteger(input);
+        numberOfMessages = readWholeNumber(input, 1);
+        Message.prepareMessageArrays(numberOfMessages);
 
         /*
          * This menu loop continues until the user selects option 3 to quit.
@@ -122,7 +123,8 @@ public class PROG5121_POE_ST10522119
             System.out.println("1.) Send Messages");
             System.out.println("2.) Show recently sent messages");
             System.out.println("3.) Quit");
-            menuChoice = readNonNegativeInteger(input);
+            System.out.println("4.) Stored Messages");
+            menuChoice = readWholeNumber(input, 0);
 
             if(menuChoice == 1)
             {
@@ -139,8 +141,9 @@ public class PROG5121_POE_ST10522119
                      */
                     for(; messagesEntered < numberOfMessages; messagesEntered++)
                     {
-                        captureMessage(input, messagesEntered + 1);
+                        captureMessage(input, messagesEntered, login.getCellphoneNumber());
                     }
+                    System.out.println("Total messages sent: " + reportMessage.returnTotalMessages());
                 }
             }
             else
@@ -158,7 +161,15 @@ public class PROG5121_POE_ST10522119
                     }
                     else
                     {
+                        if(menuChoice == 4)
+                        {
+                            storedMessagesMenu(input, reportMessage);
+                        }
+                        else
+                        {
                         System.out.println("Invalid option selected.");
+                        }
+                        
                     }
                 }
             }
@@ -172,20 +183,27 @@ public class PROG5121_POE_ST10522119
      * crashing on non-numeric input by checking each character before converting
      * the String to an int.
      */
-    private static int readNonNegativeInteger(Scanner input)
+    private static int readWholeNumber(Scanner input, int minimumValue)
     {
-        String value;
-        boolean valid = false;
-        int number = 0;
+        String textValue;
+        int number = minimumValue - 1;
+        boolean validNumber = false;
 
-        while(!valid)
+        while(!validNumber)
         {
-            value = input.nextLine();
+            textValue = input.nextLine();
 
-            if(isWholeNumber(value))
+            if(isWholeNumber(textValue))
             {
-                number = Integer.parseInt(value);
-                valid = true;
+                number = Integer.parseInt(textValue);
+                if(number >= minimumValue)
+                {
+                    validNumber = true;
+                }
+                else
+                {
+                    System.out.println("Please enter a number oof at least" + minimumValue + ": ");
+                }
             }
             else
             {
@@ -224,7 +242,7 @@ public class PROG5121_POE_ST10522119
      * This method captures one message. Separating this work from main() makes
      * the program easier to read and maintain through methods (Farrell, 2023).
      */
-    private static void captureMessage(Scanner input, int messageNumber)
+    private static void captureMessage(Scanner input, int messageNumber, String sender)
     {
         String messageID;
         String recipient;
@@ -244,6 +262,7 @@ public class PROG5121_POE_ST10522119
         message = new Message();
         message.setMessageID(messageID);
         message.setMessageNumber(messageNumber);
+        message.setSender(sender);
 
         /* This loop repeats until the recipient cellphone number is valid. */
         while(!recipientReady)
@@ -282,7 +301,7 @@ public class PROG5121_POE_ST10522119
         System.out.println("2.) Disregard the Message");
         System.out.println("3.) Store the Message to send later");
         System.out.println("Selection: ");
-        sendChoice = readNonNegativeInteger(input);
+        sendChoice = readWholeNumber(input, 1);
         message.setSendChoice(sendChoice);
 
         System.out.println(message.SentMessage());
@@ -291,24 +310,98 @@ public class PROG5121_POE_ST10522119
          * Sent messages display all details. Stored messages display the
          * JSON-formatted text produced by toJsonText().
          */
-        if(sendChoice == 1)
+        if(sendChoice == Message.STATUS_SENT)   
         {
             System.out.println(message.getFullDetails());
         }
         else
         {
-            if(sendChoice == 3)
+            if(sendChoice == Message.STATUS_STORED)
             {
                 System.out.println("Stored JSON text:");
                 System.out.println(message.toJsonText());
             }
         }
     }
-}
 
 
 /*
-Bibliography
-Farrell, J., 2023. Java Programming. Boston: Cengage Learning.
-The Independent Institute of Education (IIE), 2026. Programming 1A Assignment[PROG5121wPOE] The Independent Institute of Education: Unpublished.
+The following part of the code contains the array of features that are required by part 3 of the POE. Which are: 
+display sender/recipient, longest message, search by ID, search by recipient, delete by hash, and display a report.
 */
+
+private static void storedMessagesMenu(Scanner input, Message reportMessage)
+{
+    int storedChoice = 0;
+    String searchValue;
+    
+    while(storedChoice !=7)
+    {
+        System.out.println("\nStored Messages Menu: ");
+        System.out.println("1.) Display sender and recipient of all stored messages");
+        System.out.println("2.) Display the longest message");
+        System.out.println("3.) Search for a message ID");
+        System.out.println("4.) Search messages for a particular recipient");
+        System.out.println("5.) Delete a message using the message hash");
+        System.out.println("6.) Display full message report");
+        System.out.println("7.) Return to main menu");
+        storedChoice = readWholeNumber(input, 1);
+        
+        if(storedChoice ==1)
+        {
+            System.out.println(reportMessage.displayStoredSenderRecipient());
+        }
+            else
+            {
+             if(storedChoice == 2)
+          {
+                System.out.println(reportMessage.displayLongestMessage());
+              }
+             else
+            {
+                if(storedChoice == 3)
+                {
+                    System.out.println("Enter the message ID to search for: ");
+                    searchValue = input.nextLine();
+                    System.out.println(reportMessage.searchMessageByID(searchValue));
+                }        
+                
+             else
+             {
+                if(storedChoice == 4)
+                {
+                System.out.println("Enter the recipient cellphone number: ");
+                searchValue = input.nextLine();
+                System.out.println(reportMessage.searchMessagesByRecipient(searchValue));
+                }
+                
+             else
+             {
+                 if(storedChoice == 5)
+                 {
+                     System.out.println("Enter the message hash to delete: ");
+                     searchValue = input.nextLine();
+                     System.out.println(reportMessage.deletedMessageByHash(searchValue));
+                 }
+             else 
+             {
+                 if(storedChoice == 6)
+                 {
+                     System.out.println(reportMessage.displayReport());
+                 }
+             else
+             {
+                 if(storedChoice != 7)
+                 {
+                     System.out.println("Invalid option selected.");  
+                 }
+                    
+                 }
+                }
+               }
+              }       
+             }
+            }
+           }
+          }
+         }

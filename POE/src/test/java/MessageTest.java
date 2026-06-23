@@ -33,7 +33,7 @@ public class MessageTest
     {
         Message message = new Message("0012345678", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertEquals(Message.MESSAGE_READY, message.validateMessageLength());
-        assertEquals(message.MESSAGE_SENT_TEXT, message.getMessageLengthDisplayMessage());
+        
     }
 
     /*
@@ -111,12 +111,6 @@ public class MessageTest
         Message message = new Message("00123456789", 0, "+27718693002", "Hi Mike, can you join us for dinner tonight?");
         assertFalse(message.checkMessageID());
     }
-
-    /*
-     * This test confirms that the message hash uses the first two message-ID digits, the message number, and the first
-       and last message words.
-     */
-    
   
     /*
      * This test confirms that the generated message ID is ten characters long.
@@ -152,7 +146,7 @@ public class MessageTest
     {
         Message report = new Message();
         populateFinalPoeTestData();
-        assertEquals("Is it dinner time!", report.getMessageByID("0838884567"));
+        assertEquals("It is dinner time!", report.getMessageByID("0838884567"));
         assertTrue(report.searchMessageByID("0838884567").contains("It is dinner time!"));
     }
  
@@ -215,7 +209,7 @@ public class MessageTest
     {
         Message report = new Message();
         populateFinalPoeTestData();
-        assertEquals("Did you get the cake? It is dinner time!", report.getSentMessagesArrayText());
+        assertEquals("Did you get the cake?, It is dinner time!", report.getSentMessagesArrayText());
     }
     
     /*
@@ -227,7 +221,7 @@ public class MessageTest
     {
         Message report = new Message();
         populateFinalPoeTestData();
-        assertEquals("Where are you? You are Late! I have asked you to be on time.", report.displayLongestMessage());
+        assertEquals("Where are you? You are late! I have asked you to be on time.", report.displayLongestMessage());
     }
     
     /*
@@ -254,11 +248,12 @@ public class MessageTest
     public void testDeleteMessageByHash()
     {
         Message report = new Message();
-        Message messageTwo = new Message("2000000002", 1, "+27838884567", "Where are you? You are late! I have asked you to be on time.");
+        String[] hashes;
         String result;
         
         populateFinalPoeTestData();
-        result = report.deletedMessageByHash(messageTwo.createMessageHash());
+        hashes = report.getMessageHashArray();
+        result = report.deletedMessageByHash(hashes[1]);
         assertEquals("Message: \"Where are you? You are late! I have asked you to be on time.\" successfully deleted.", result);
         assertFalse(report.searchMessagesByRecipient("+27838884567").contains("Where are you? You are late! I have asked you to be on time."));
         

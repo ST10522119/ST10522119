@@ -10,9 +10,9 @@ name: Java Maven Tests
 
 on:
   push:
-    branches: [ main, POE_3, POE ]
+    branches: [ POE/pom.xml ]
   pull_request:
-    branches: [ main, POE_3. POE ]
+    branches: [ POE/pom.xml ]
 
 permissions:
   contents: read

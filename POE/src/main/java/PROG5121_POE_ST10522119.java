@@ -3,7 +3,7 @@ package com.mycompany.prog5121_poe_st10522119;
 import java.util.Scanner;
 
 /**
- * PROG5121w POE Parts 1 and 2.
+ * PROG5121w POE Parts 1, 2 and 3
  * Author: Lebohang Modiko
  * Student number: ST10522119
  *
@@ -55,7 +55,7 @@ public class PROG5121_POE_ST10522119
         /*
          * This loop repeats registration until the username, password, and
          * cellphone number all pass their validation checks. A while loop is
-         * suitable because the number of attempts is unknown (Farrell, 2023).
+         * suitable because the number of attempts is unknown (Cengage Learning, 2019C; Farrell, 2023).
          */
         while(!registered)
         {
@@ -137,7 +137,7 @@ public class PROG5121_POE_ST10522119
                     /*
                      * A for loop is suitable here because the number of message
                      * entries is controlled by the user-selected limit
-                     * (Farrell, 2023).
+                     * (Cengage Learning, 2019c; Farrell, 2023).
                      */
                     for(; messagesEntered < numberOfMessages; messagesEntered++)
                     {
@@ -240,7 +240,7 @@ public class PROG5121_POE_ST10522119
 
     /*
      * This method captures one message. Separating this work from main() makes
-     * the program easier to read and maintain through methods (Farrell, 2023).
+     * the program easier to read and maintain through methods (Cengage Learning, 2019a; Farrell, 2023).
      */
     private static void captureMessage(Scanner input, int messageNumber, String sender)
     {
@@ -405,3 +405,19 @@ private static void storedMessagesMenu(Scanner input, Message reportMessage)
            }
           }
          }
+/*
+Bibliography
+
+Cengage Learning, 2019a. Java Programming, 9e: Chapter 3: Using Methods, Classes, and Objects. Boston: Cengage Learning.
+
+Cengage Learning, 2019b. Java Programming, 9e: Chapter 4: More Object Concepts. Boston: Cengage Learning.
+
+Cengage Learning, 2019c. Java Programming, 9e: Chapter 5 and Chapter 6: Making Decisions and Looping. Boston: Cengage Learning.
+
+Cengage Learning, 2019d. Java Programming, 9e: Chapter 7: Characters, Strings, and the StringBuilder. Boston: Cengage Learning.
+
+Cengage Learning, 2019e. Java Programming, 9e: Chapter 8: Arrays. Boston: Cengage Learning.
+
+Farrell, J., 2023. Java Programming. Boston: Cengage Learning.
+
+*/

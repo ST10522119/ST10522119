@@ -25,7 +25,7 @@ public class Login
      * The following private fields hold the user's registration information and
      * attempted login details. The fields are private to apply data hiding,
      * which means other classes must use methods to work with the data
-     * (Farrell, 2023).
+     * (Cengage Learning, 2019a; Farrell, 2023).
      */
     private String firstName;
     private String surname;
@@ -56,7 +56,7 @@ public class Login
     /*
      * This overloaded constructor lets tests and other classes create a complete
      * Login object in one statement. Overloaded constructors keep code simple
-     * and testable (Farrell, 2023).
+     * and testable (Cengage Learning, 2019b; Farrell, 2023).
      */
     public Login(String firstName, String surname, String username, String password, String cellphoneNumber)
     {

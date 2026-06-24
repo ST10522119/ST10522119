@@ -31,7 +31,7 @@ public class Message
      * The default array size is used before the applicationn knows how many 
      * messages the user plans to send. The array can also be expanded manually
      * using loops, which follows the array principles 
-     * (Farrell, 2023)
+     * (Cengage Learning, 2019e; Farrell, 2023)
      */
     
     private static final int DEFAULT_ARRAY_SIZE = 100;
@@ -106,7 +106,7 @@ public class Message
     /*
      * This overloaded constructor creates a Message object with key values that
      * have already been supplied. It is useful for unit tests because test data
-     * can be created in one statement (Farrell, 2023).
+     * can be created in one statement (Cengage Learning, 2019b; Farrell, 2023).
      */
     public Message(String messageID, int messageNumber, String recipient, String message)
     {
@@ -281,7 +281,8 @@ public class Message
     /*
      * This method creates the POE message hash. The hash contains the first two digits of the message ID, 
        the message number, and the first and last words of the message in uppercase. 
-     * It uses String methods such as substring(), indexOf(), lastIndexOf(), and toUpperCase() (Farrell, 2023).
+     * It uses String methods such as substring(), indexOf(), lastIndexOf(), and toUpperCase() 
+     * (Cengage Learning, 2019d; Farrell, 2023).
      */
     public String createMessageHash()
     {
@@ -441,7 +442,8 @@ public class Message
     /*
      * This private method adds the current message to the general arrays and to
      * the selected status array. Parallel arrays are used so that the value in the
-     * same subscript position belongs to the same message record. (Farrell, 2023)
+     * same subscript position belongs to the same message record.
+     * (Cengage Learning, 2019e; Farrell, 2023)
      */
     
     private void recordMessage(int status)
@@ -652,7 +654,7 @@ public class Message
     /*
      * This method prepares new arrays with size based on the number of records the user
      * plans to enter. It demonstrates declaring and creating arrays with square brackets.
-     * (Farrell, 2023)
+     * (Cengage Learning, 2019e; Farrell, 2023)
      */
     
     public static void prepareMessageArrays(int maximumMessages)
@@ -884,7 +886,7 @@ public class Message
     /*
      * This method searches the parallel arrays and returns the longest message.
      * It uses a loop that starts at subscript 0 and ends before the array length,
-     * matching the (Farrell, 2023) guidance for processing arrays.
+     * using the guidance provided for processing arrays. (Cengage Learning, 2019e; Farrell, 2023)
      */
 
     public String displayLongestMessage()

@@ -34,4 +34,4 @@ jobs:
 
       - name: Run tests with Maven
         run: mvn -B clean test
-        working-directory: PROG6112w-Assignment-1
+        working-directory: PROG6112_Assignment1_ST10522119

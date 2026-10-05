@@ -20,7 +20,7 @@ public abstract class RescueCase implements RescueOperations
 
 /*
  Private fields hide shared state. final fixes creation data after construction.
- Only rescueStatus is mutable, through its validated setter.
+ Only rescueStatus is mutable, through its validated setter. (Farrell, 2023)
  */
     
     private final String rescueCaseId;

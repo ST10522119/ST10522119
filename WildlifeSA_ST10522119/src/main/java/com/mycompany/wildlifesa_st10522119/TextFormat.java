@@ -4,6 +4,7 @@ package com.mycompany.wildlifesa_st10522119;
 /*
  * Imports DecimalFormat for two-decimal rand output. (Burd, 2011)
  */
+
 import java.text.DecimalFormat;
 
 /*
@@ -16,7 +17,7 @@ public class TextFormat
 
 /*
  This code creates a DecimalFormat for each call and fixes both fraction limits at two.
- The R prefix identifies rand; the formatter uses the machine locale for grouping
+ The R prefix identifies Rand; the formatter uses the machine locale for grouping
  and decimal separators. Display rounding does not change the stored double.
  (Burd, 2011)
  */
@@ -47,6 +48,7 @@ public class TextFormat
  Characters cause a new line before column 66, then are appended and counted.
  The result keeps dialog lines at most 65 characters wide. (Farrell, 2023)
  */
+    
     public static String wrap(String text) 
     {
         StringBuilder result = new StringBuilder();

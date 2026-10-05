@@ -7,6 +7,7 @@ package com.mycompany.wildlifesa_st10522119;
 
 public interface RescueOperations 
 {
+    
 /*
  This code declares the public operation to set a rescue to In Progress. 
  RescueCase provides the implementation inherited by all three concrete types.

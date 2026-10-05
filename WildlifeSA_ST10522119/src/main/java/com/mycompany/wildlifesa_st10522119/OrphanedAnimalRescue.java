@@ -39,13 +39,13 @@ public class OrphanedAnimalRescue extends RescueCase
     public int getEstimatedAgeMonths() { return estimatedAgeMonths; }
     
 /*
- Returns the once-per-case feeding charge in rand.
+ This code returns the once-per-case feeding charge in rand.
  */
     
     public double getFeedingCost() { return feedingCost; }
     
 /*
- Returns the Boolean foster-care requirement used by the cost and priority rules.
+ This code returns the Boolean foster-care requirement used by the cost and priority rules.
  */
     
     public boolean isFosterCareRequired() { return fosterCareRequired; }

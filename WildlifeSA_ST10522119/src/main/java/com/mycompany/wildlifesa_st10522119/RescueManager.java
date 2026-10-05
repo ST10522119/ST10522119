@@ -18,7 +18,7 @@ public class RescueManager
  
 /*
  One private growable list holds all three subtypes as RescueCase references.
- final prevents replacing the list reference; addRescueCase can still add elements.
+ final prevents replacing the list reference, addRescueCase can still add elements.
  The list lasts only for this application session. (Burd, 2011)
  */
     private final ArrayList<RescueCase> rescueCases = new ArrayList<RescueCase>();

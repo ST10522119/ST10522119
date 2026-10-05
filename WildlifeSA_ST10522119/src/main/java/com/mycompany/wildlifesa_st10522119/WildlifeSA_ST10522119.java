@@ -11,31 +11,33 @@ import javax.swing.JOptionPane;
 public class WildlifeSA_ST10522119 
 {
     
- /*
-  This application owns one manager, so all menu actions share the same in-memory
-  case list. Other code cannot replace the manager reference.
-  */
-    private final RescueManager manager = new RescueManager();
+/*
+ This application owns one manager, so all menu actions share the same in-memory
+ case list. Other code cannot replace the manager reference.
+ */
+    
+private final RescueManager manager = new RescueManager();
 
-    /*
-     This set of code creates one application object and calls its menu loop.
-    */
-    public static void main(String[] args) 
+/*
+ This set of code creates one application object and calls its menu loop.
+ */
+    
+public static void main(String[] args) 
     {
     WildlifeSA_ST10522119 application = new WildlifeSA_ST10522119();
     application.run();
     }
     
- /*
-  This code repeats the main menu while running is true. Cancel (0) and Exit (9) open
-  an exit confirmation. Only Yes will stop the loop. The switch dispatches choices
-  1-8 to the corresponding action. Action-level catches show cancellation or
-  validation messages and return control to the menu instead of terminating.
-  (Farrell, 2023)
-     */
+/*
+ This code repeats the main menu while running is true. Cancel (0) and Exit (9) open
+ an exit confirmation. Only Yes will stop the loop. The switch dispatches choices
+ 1-8 to the corresponding action. Action-level catches show cancellation or
+ validation messages and return control to the menu instead of terminating.
+ (Farrell, 2023)
+ */
     
-    public void run() 
-    {
+ public void run() 
+ {
     boolean running = true;
     while (running)
         {
@@ -78,12 +80,12 @@ public class WildlifeSA_ST10522119
         }
     }
     
-    /*
-     The following code shows the nine actions and current case count in an input dialog.
-     Null means Cancel or close and returns the exit sentinel 0. Other input is
-     trimmed and parsed; only 1-9 can return. Both malformed and out-of-range input
-     reach the same error message, and the loop prompts again.
-     */
+/*
+ The following code shows the nine actions and current case count in an input dialog.
+ Null means Cancel or close and returns the exit sentinel 0. Other input is
+ trimmed and parsed; only 1-9 can return. Both malformed and out-of-range input
+ reach the same error message, and the loop prompts again.
+ */
     
     private int readMainMenu()
     {
@@ -115,13 +117,13 @@ public class WildlifeSA_ST10522119
     }    
     }
     
-    /*
-     The following code collects a valid rescue type and all common fields before constructing a case.
-     The if/else branches create the appropriate subclass through a RescueCase reference.
-     Endangered classifications use a three-element array, while subtracting 1 converts a menu number to its index.    
-     The manager receives the case only after all input and constructor checks pass.
-     No partial records will be saved should cancellation occur before that point.
-     */
+/*
+ The following code collects a valid rescue type and all common fields before constructing a case.
+ The if/else branches create the appropriate subclass through a RescueCase reference.
+ Endangered classifications use a three-element array, while subtracting 1 converts a menu number to its index.    
+ The manager receives the case only after all input and constructor checks pass.
+ No partial records will be saved should cancellation occur before that point.
+ */
     
     private void createCase() 
     {
@@ -168,28 +170,28 @@ public class WildlifeSA_ST10522119
         showPagedMessage("Rescue case created", rescueCase.getFullDetails());
     }
 
-    
-    /*
-     The next code repeats the ID prompt until the manager finds no existing match
-     Blank text will be rejected by readText; and matching IDs produce a retry message.
-     */
+/*
+ The next code repeats the ID prompt until the manager finds no existing match
+ Blank text will be rejected by readText; and matching IDs produce a retry message.
+ */
     
     private String readUniqueId() 
     {
         while (true) 
         {
             String id = readText("Rescue Case ID (must be unique)");
-            if (manager.findById(id) == null) {
+            if (manager.findById(id) == null) 
+               {
                 return id;
-            }
+               }
             showError("That Rescue Case ID already exists. Enter another ID.");
         }
     }
 
-    /*
-     This code will read one valid ID and retrieve its stored object. 
-     it shows a not-found message for null and returns the result so each caller can safely check it.
-     */ 
+/*
+ This code will read one valid ID and retrieve its stored object. 
+ it shows a not-found message for null and returns the result so each caller can safely check it.
+ */ 
     
     private RescueCase selectExistingCase() 
     {
@@ -202,9 +204,9 @@ public class WildlifeSA_ST10522119
         return rescueCase;
     }
 
-    /*
-     This code will display full common and specialised details only when the selected ID exists.
-    */
+/*
+ This code will display full common and specialised details only when the selected ID exists.
+ */
     
     private void searchCase() 
     {
@@ -215,11 +217,11 @@ public class WildlifeSA_ST10522119
         }
     }
 
-    /*
-     For an existing case, this code will show the current state and three permitted new states.
-     A validated choice is mapped to its array element using choice minus 1.
-     The manager updates the stored case and the resulting summary will be displayed.
-    */
+/*
+ For an existing case, this code will show the current state and three permitted new states.
+ A validated choice is mapped to its array element using choice minus 1.
+ The manager updates the stored case and the resulting summary will be displayed.
+ */
     
     private void updateStatus() 
     {
@@ -234,13 +236,12 @@ public class WildlifeSA_ST10522119
         }
     }
 
-    /* 
-     The interface reference can refer to any of the three rescue subclasses. (Farrell, 2023)
-     This set of code uses an interface reference for any concrete rescue type. The start parameter
-     selects startRescue for true and completeRescue for false. Both operations
-     update the shared status, then the updated polymorphic summary is displayed.
-     (Farrell, 2023)
-     */
+/* 
+ The interface reference can refer to any of the three rescue subclasses. (Farrell, 2023)
+ This set of code uses an interface reference for any concrete rescue type. The start parameter
+ selects startRescue for true and completeRescue for false. Both operations
+ update the shared status, then the updated polymorphic summary is displayed.(Farrell, 2023
+ */
     
     private void performOperation(boolean start) 
     {
@@ -260,10 +261,10 @@ public class WildlifeSA_ST10522119
         }
     }
     
-  /*
-   This set of code will Display one existing case through the RescueOperations contract.
-   No subtype-specific selection is needed for its priority or cost calculation. 
-   */  
+/*
+ This set of code will Display one existing case through the RescueOperations contract.
+ No subtype-specific selection is needed for its priority or cost calculation. 
+ */  
 
     private void generateSummary() 
     {
@@ -275,11 +276,11 @@ public class WildlifeSA_ST10522119
         }
     }
 
-  /*
-   This set of code centralises text-dialog input. A cancelled or closed dialog returns null from
-   JOptionPane, so a custom exception exits the current action. Otherwise the raw
-   String is returned to a helper that validates the requested kind of input.
-   */
+/*
+ This set of code centralises text-dialog input. A cancelled or closed dialog returns null from
+ JOptionPane, so a custom exception exits the current action. Otherwise the raw
+ String is returned to a helper that validates the requested kind of input.
+ */
     
     private String readInput(String prompt) 
     {
@@ -292,11 +293,11 @@ public class WildlifeSA_ST10522119
         return value;
     }
     
-  /*
-   This set of code retries required-text validation until a non-blank trimmed value is returned.
-   The validation error is displayed inside the loop. Cancellation is thrown by
-   readInput outside the try block and therefore reaches the action-level catch. 
-   */  
+/*
+ This set of code retries required-text validation until a non-blank trimmed value is returned.
+ The validation error is displayed inside the loop. Cancellation is thrown by
+ readInput outside the try block and therefore reaches the action-level catch. 
+ */  
 
     private String readText(String prompt) 
     {
@@ -313,22 +314,29 @@ public class WildlifeSA_ST10522119
         }
     }
 
-    /*
-     This code will repeat numeric entry until parsing and positivity checks both succeed.
-     The more specific NumberFormatException catch handles malformed or overflowing
-     integer text before the IllegalArgumentException catch handles nonpositive input.
-    */
+/*
+ This code will repeat numeric entry until parsing and positivity checks both succeed.
+ The more specific NumberFormatException catch handles malformed or overflowing
+ integer text before the IllegalArgumentException catch handles nonpositive input.
+ */
     
-    private int readPositiveInteger(String prompt) {
-        while (true) {
+    private int readPositiveInteger(String prompt) 
+    {
+        while (true) 
+        {
             String input = readInput(prompt);
-            try {
+            try 
+                {
                 return Validation.parsePositiveInteger(input, prompt);
-            } catch (NumberFormatException ex) {
+                } 
+            catch (NumberFormatException ex) 
+                {
                 showError("Enter a whole number greater than zero, within the int range.");
-            } catch (IllegalArgumentException ex) {
+                } 
+            catch (IllegalArgumentException ex) 
+                {
                 showError(ex.getMessage());
-            }
+                }
         }
     }
 
@@ -387,10 +395,11 @@ public class WildlifeSA_ST10522119
                 JOptionPane.ERROR_MESSAGE);
     }
 
-    /* Wrapping and 20-line pages keep every case readable in message dialogs.
-     Only String methods, StringBuilder, decisions and loops are used.
-     (Farrell, 2023)
-     */
+/* 
+ Wrapping and 20-line pages keep every case readable in message dialogs.
+ Only String methods, StringBuilder, decisions and loops are used. (Farrell, 2023)
+ */
+    
     private void showPagedMessage(String title, String message) 
     {
         String wrapped = TextFormat.wrap(message);

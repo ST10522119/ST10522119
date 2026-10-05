@@ -26,10 +26,10 @@ public class Validation
             return value.trim();
     }
 
-  /*
-   The following code rejects zero and negative integers. Otherwise returns the unchanged valid value.
-   This shared rule applies to rescue days and estimated whole-month age.
-   */
+/*
+ The following code rejects zero and negative integers. Otherwise returns the unchanged valid value.
+ This shared rule applies to rescue days and estimated whole-month age.
+ */
     
     public static int positiveInteger(int value, String fieldName) 
     {
@@ -40,11 +40,11 @@ public class Validation
         return value;
     }
 
-  /*
-   This code rejects NaN, positive or negative infinity, zero and negative values.
-   Checking nonfinite values also catches calculations that overflow double.
-   A valid amount is returned unchanged for storage and arithmetic.
-   */
+/*
+ This code rejects NaN, positive or negative infinity, zero and negative values.
+ Checking nonfinite values also catches calculations that overflow double.
+ A valid amount is returned unchanged for storage and arithmetic.
+ */
     
     public static double positiveAmount(double value, String fieldName) 
     {
@@ -55,33 +55,33 @@ public class Validation
         return value;
     }
 
-   /*
-    This code checks and trims text, converts it with Integer.parseInt, then checks positivity.
-    Malformed text, decimals and values outside int range cause NumberFormatException.
-    Valid integers that are not positive cause IllegalArgumentException. 
-    The GUI catches these errors and retries. (Farrell, 2023)
-    */
+/*
+ This code checks and trims text, converts it with Integer.parseInt, then checks positivity.
+ Malformed text, decimals and values outside int range cause NumberFormatException.
+ Valid integers that are not positive cause IllegalArgumentException. 
+ The GUI catches these errors and retries. (Farrell, 2023)
+ */
     
     public static int parsePositiveInteger(String text, String fieldName) 
     {
         return positiveInteger(Integer.parseInt(requiredText(text, fieldName)), fieldName);
     }
 
-   /*
-    This code checks and trims text, parses a double, then rejects non-positive or non-finite
-    results. Parsing errors propagate to the GUI input-recovery loop.
-    */
+/*
+ This code checks and trims text, parses a double, then rejects non-positive or non-finite
+ results. Parsing errors propagate to the GUI input-recovery loop.
+ */
     
     public static double parsePositiveAmount(String text, String fieldName) 
     {
         return positiveAmount(Double.parseDouble(requiredText(text, fieldName)), fieldName);
     }
 
-   /*
-    This code normalises case-insensitive input to one of the three permitted labels.
-    Each matching branch returns the canonical spelling. An unsupported label will throw
-    an exception instead of storing inconsistent classification text.
-     */
+/*
+ This code normalises case-insensitive input to one of the three permitted labels.
+ Each matching branch returns the canonical spelling. An unsupported label will throw
+ an exception instead of storing inconsistent classification text.
+ */
     
     public static String classification(String value) 
     {

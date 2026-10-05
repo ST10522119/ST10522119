@@ -45,7 +45,7 @@ public class RescueManagerTest
     }
 
 /*
- Checks trimming on creation and onfirms spaces and letter case do not create a different identifier.
+ This test checks trimming on creation and onfirms spaces and letter case do not create a different identifier.
  */
     
     @Test
@@ -75,7 +75,7 @@ public class RescueManagerTest
     }
 
 /*
- Attempts an orphan case with the injured case ID in different case and spacing.
+ This test attempts an orphan case with the injured case ID in different case and spacing.
  fail makes unexpected acceptance fail the test. The catch checks that count,
  original object identity and R7,200 total are unchanged after rejection.
  */
@@ -163,7 +163,7 @@ public class RescueManagerTest
     }
 
 /*
- * This test checks the zero-case message, zero count and zero cost before any cases are added.
+ This test checks the zero-case message, zero count and zero cost before any cases are added.
  */
     
     @Test

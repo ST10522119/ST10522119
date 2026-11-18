@@ -1,0 +1,9 @@
+DATA LOG
+******************************
+
+Customer Name: Lebohang
+Product: Cozy Nights Monarch
+VAT: R675.0
+Commission: R225.0
+Total: R5400.0
+******************************
